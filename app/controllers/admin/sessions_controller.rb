@@ -9,7 +9,7 @@ class Admin::SessionsController < Admin::Base
   end
 
   def create
-    @form = Admin::LoginForm.new(params[:admin_login_form])
+    @form = Admin::LoginForm.new(login_form_params)
     if @form.email.present?
       admin_member = Administrator.find_by("LOWER(email) = ?", @form.email.downcase)
     end
@@ -33,5 +33,11 @@ class Admin::SessionsController < Admin::Base
     session.delete(:administrator_id)
     flash.notice = "ログアウトしました。"
     redirect_to :admin_root
+  end
+
+  private def login_form_params
+    # requireメソッドはparamsに引数のキーがあるかチェックする。なければ実行時例外
+    # permitはハッシュから引数で指定されたキー以外を除去して返却する。機能に不要なパラメータをユーザに見せないための考慮
+    params.require(:admin_login_form).permit(:email, :password)
   end
 end
