@@ -8,10 +8,10 @@ describe String do
       expect(s.size).to eq(4)
     end
 
-    example "nilは追加できない", :exception do
-      pending("調査中")
-      s = "ABC"
-      expect { s << nil }.to raise_error(TypeError)
-    end
+    # example "nilは追加できない", :exception do
+    #   pending("調査中")
+    #   s = "ABC"
+    #   expect { s << nil }.to raise_error(TypeError)
+    # end
   end
 end
