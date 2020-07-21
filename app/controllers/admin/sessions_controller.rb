@@ -1,4 +1,7 @@
 class Admin::SessionsController < Admin::Base
+  # アクションの前に実行されないようにする。
+  skip_before_action :autholize
+
   def new
     if current_administrator
       redirect_to :admin_root
