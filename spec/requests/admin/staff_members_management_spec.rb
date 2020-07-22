@@ -1,5 +1,9 @@
 require "rails_helper"
 
+describe "管理者による職員管理", "ログイン前" do
+  include_examples "a protected admin controller", "admin/staff_members"
+end
+
 describe "管理者による職員管理" do
   let(:administrator) { create(:administrator) }
   before do
@@ -9,6 +13,15 @@ describe "管理者による職員管理" do
         password: "pw"
       }
     }
+  end
+
+  describe "情報表示" do
+    let(:administrator) { create(:administrator) }
+    example "停止フラグがセットされた場合強制ログアウト" do
+      administrator.update_column(:suspended, true)
+      get admin_staff_members_url
+      expect(response).to redirect_to(admin_root_url)
+    end
   end
 
   describe "新規登録" do
