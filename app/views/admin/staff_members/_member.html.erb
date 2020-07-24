@@ -1,0 +1,13 @@
+<tr>
+  <td><%= member.family_name %> <%= member.given_name %></td>
+  <td><%= member.family_name_kana %> <%= member.given_name_kana %></td>
+  <td class="email"><%= member.email %></td>
+  <td class="date"><%= member.start_date.strftime("%Y/%m/%d") %></td>
+  <td class="date"><%= member.end_date.try(:strftime, "%Y/%m/%d") %></td>
+  <td class="boolean"><%= member.suspended? ? raw("&#x2611;") : raw("&#x2610;") %></td>
+  <td class="actions">
+    <%= link_to "編集", [ :edit, :admin, member ] %> |
+    <%= link_to "Events", [ :admin, member, :staff_events ] %> |
+    <%= link_to "削除", [ :admin, member ], method: :delete, data: { confirm: "本当に削除しますか？" } %>
+  </td>
+</tr>
