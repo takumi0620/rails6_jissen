@@ -15,6 +15,7 @@ gem "bootstrap", ">= 1.4.2", require: false
 gem "bcrypt"
 gem "rails-i18n"
 gem "kaminari"
+gem "date_validator"
 gem "valid_email2"
 gem "nokogiri"
 
