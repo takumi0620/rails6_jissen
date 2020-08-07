@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resource :session, only: [:create, :destroy]
       resource :account, expect: [:new, :create, :destroy]
       resource :password, only: [ :show, :edit, :update ]
+      resources :customers
     end
   end
 
