@@ -10,7 +10,7 @@ function toggle_work_address_fields() {
   $("fieldset#work-address-fields select").prop("disabled", !checked);
 }
 
-$(document).on("ready turbolinks:load", () => {
+$(document).on("turbolinks:load", () => {
   toggle_home_address_fields();
   toggle_work_address_fields();
   $("input#form_inputs_home_address").on("click", () => {

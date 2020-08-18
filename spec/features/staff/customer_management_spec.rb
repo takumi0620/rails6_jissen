@@ -22,6 +22,7 @@ feature "職員による顧客管理" do
     fill_in "form_customer_given_name_kana", with: "ハナコ"
     fill_in "生年月日", with: "1970-01-01"
     choose "女性"
+    check "自宅住所を入力する"
     within("fieldset#home-address-fields") do
       fill_in "郵便番号", with: "1000001"
       select "東京都", from: "都道府県"
@@ -29,6 +30,7 @@ feature "職員による顧客管理" do
       fill_in "町域、番地等", with: "千代田 1-1-1"
       fill_in "建物名、部屋番号等", with: ""
     end
+    check "勤務先を入力する"
     within("fieldset#work-address-fields") do
       fill_in "会社名", with: "テスト"
       fill_in "部署名", with: ""
