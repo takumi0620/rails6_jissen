@@ -15,7 +15,10 @@ class Staff::CustomerForm
 
   def assign_attributes(params = {})
     @params = params
+    self.inputs_home_address = params[:inputs_home_address] == "1"
+    self.inputs_work_address = params[:inputs_work_address] == "1"
     customer.assign_attributes(customer_params)
+
     if inputs_home_address
       customer.home_address.assign_attributes(home_address_params)
     else
